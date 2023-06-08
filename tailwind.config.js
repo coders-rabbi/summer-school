@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        arizonia: ['Arizonia', 'cursive'],
+        josefin:['Josefin Sans', 'sans-serif']
+      }
+    },
   },
   plugins: [require("daisyui")],
 }
