@@ -1,10 +1,33 @@
 import { Link } from "react-router-dom";
 import registerImage from "../../assets/login/login.svg"
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
 
     const handleRegister = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photoUrl = form.photo.value;
+        const userDetails = { name, email, password, photoUrl }
+
+        
+        createUser(email, password)
+            .then(result => {
+                const loggedInUser = result.user;
+                toast("Your account create Successfuly!");
+                form.reset();
+            })
+            .catch(Error => {
+                toast(Error.message);
+            })
 
     }
     return (
@@ -41,7 +64,7 @@ const Register = () => {
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                                 <label className="label">
-                                    <Link><a className="label-text-alt link link-hover">Forgot password?</a></Link>
+                                    <Link>Forgot password?</Link>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
@@ -58,6 +81,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

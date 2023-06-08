@@ -1,14 +1,33 @@
 
-import loginPhoto from "../../assets/login/login.svg"
-import React, { useContext } from 'react';
+import loginPhoto from "../../assets/login/login.png";
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link } from "react-router-dom";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGithub, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-    const { user } = useContext(AuthContext);
+    const [passwordType, setPasswordType] = useState();
+    const [visible, setVisible] = useState(false);
+    const { signIn } = useContext(AuthContext);
+
 
     const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                const loggedInUser = result.user;
+                toast("Logged In Successfuly!");
+                form.reset();
+            })
+            .catch(error => {
+                toast(error.message);
+            })
 
     }
     return (
@@ -16,7 +35,7 @@ const Login = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col md:flex-row justify-center">
                     <div className="text-center lg:text-left w-1/2">
-                        <img src={loginPhoto} alt="" />
+                        <img className="hidden md:block h-[500px]" src={loginPhoto} alt="" />
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
                         <h1 className='text-center text-4xl font-bold mt-16'>Login</h1>
@@ -32,9 +51,19 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                                    <div className="flex items-center">
+                                        <input
+                                            type={visible ? 'text' : 'password'}
+                                            name='password'
+                                            placeholder="password" className="input input-bordered flex-1" />
+                                        <div onClick={() => setVisible(!visible)} className="absolute right-11">
+                                            {
+                                                visible ? <FaEye /> : <FaEyeSlash />
+                                            }
+                                        </div>
+                                    </div>
                                     <label className="label">
-                                        <Link><a className="label-text-alt link link-hover">Forgot password?</a></Link>
+                                        <Link>Forgot password?</Link>
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
@@ -52,6 +81,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
