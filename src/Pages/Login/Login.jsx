@@ -2,15 +2,19 @@
 import loginPhoto from "../../assets/login/login.png";
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-    const [passwordType, setPasswordType] = useState();
     const [visible, setVisible] = useState(false);
     const { signIn, googleSingIn } = useContext(AuthContext);
+
+
+    const location = useLocation();
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
 
 
     const handleLogin = event => {
@@ -18,12 +22,14 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+        const loggedUser = { email: email, password: password }
 
         signIn(email, password)
             .then(result => {
-                const loggedInUser = result.user;
+                const loggedUser = result.user;
                 toast("Logged In Successfuly!");
                 form.reset();
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 toast(error.message);

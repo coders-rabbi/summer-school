@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    console.log(user);
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/register">Register</Link></li>
+        <div className='flex items-center'>
+            {
+                user ?
+                    // <button onClick={() => { logOut() }} type="submit" className="btn">LogOut</button>
+                    <Link><li className='font-bold bg-warning py-2 px-2 rounded-lg' onClick={() => { logOut() }} >LogOut</li></Link>
+                    :
+                    <>
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/register">Register</Link></li>
+                    </>
+            }
+        </div>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -20,7 +33,7 @@ const NavBar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <a className="btn btn-ghost normal-case text-xl">Art In Motion</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -28,7 +41,11 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <div>
+                    {
+                        user && <img className='w-20 h-20 rounded-full border' src={user.photoURL} alt="" />
+                    }
+                </div>
             </div>
         </div>
     );
