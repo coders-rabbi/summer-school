@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const [passwordType, setPasswordType] = useState();
     const [visible, setVisible] = useState(false);
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSingIn } = useContext(AuthContext);
 
 
     const handleLogin = event => {
@@ -28,8 +28,10 @@ const Login = () => {
             .catch(error => {
                 toast(error.message);
             })
-
     }
+
+
+
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -72,8 +74,8 @@ const Login = () => {
                             </div>
                         </form>
                         <div className='mx-auto flex gap-6 mb-4'>
+                            <button onClick={googleSingIn} className="btn btn-circle text-3xl"><FaGoogle /></button>
                             <button className="btn btn-circle text-3xl"><FaGithub /></button>
-                            <button className="btn btn-circle text-3xl"><FaGoogle /></button>
                         </div>
                         <div className='text-center mb-7'>
                             <p>New to Art In Motion ? <Link to="/register">Register</Link></p>
