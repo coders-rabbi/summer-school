@@ -4,7 +4,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext)
-    console.log(user.photoURL);
+    console.log(user?.photoURL);
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
@@ -43,7 +43,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 <div>
                     {
-                        user && <img className='w-20 h-20 rounded-full border' src={user.photoURL} alt="" />
+                        user && <img className='w-20 h-20 rounded-full border' src={user?.photoURL} alt="" />
                     }
                 </div>
             </div>
