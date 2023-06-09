@@ -3,13 +3,14 @@ import useClasses from '../../Hooks/useClasses';
 import classBanner from "../../assets/HomeBanner/banner_02.jpg"
 import { FaCalendarCheck, FaUserAlt, FaClock } from "react-icons/fa";
 import SingleClass from './SingleClass';
+import SectionTitle from '../../SectionTitile/SectionTitle';
 
 const Classes = () => {
     const [classes] = useClasses()
     console.log(classes);
     return (
         <div>
-            <div className='relative'>
+            <div className='relative mb-12'>
                 <img className='h-[900px] w-full' src={classBanner} alt="" />
                 <div className='absolute top-1/3 left-2/3'>
                     <h4 className='uppercase text-xl font-bold font-josefin text-center text-[#D79C62]'>new members</h4>
@@ -34,7 +35,11 @@ const Classes = () => {
                     </div>
                 </div>
             </div>
-            <div className='max-w-screen-xl mx-auto'>
+            <SectionTitle
+                subHeading="Our Classes" heading="our favorite classes"
+            ></SectionTitle>
+            <div className='max-w-screen-xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center mb-36 mt-20'>
+                
                 {
                     classes.map(cls => <SingleClass
                         key={cls._id}
