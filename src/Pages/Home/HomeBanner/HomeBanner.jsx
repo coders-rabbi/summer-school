@@ -18,7 +18,7 @@ const HomeBanner = () => {
                 </div>
                 <div className='absolute top-1/4 lg:left-72 md:left-40 left-24'>
                     <h2 className='text-9xl font-arizonia mb-4 text-gray-500'>Let's</h2>
-                    <h1 className='text-9xl font-serif tracking-widest'>Dance</h1>
+                    <h4 className='uppercase text-9xl font-bold font-josefin'>dance</h4>
                     <p className='text-3xl tracking-widest mt-3 font-serif'>Dance Creates a culture of optimism, <br /> the culture of cheerfulness</p>
                 </div>
             </div>

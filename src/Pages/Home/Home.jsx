@@ -3,6 +3,7 @@ import HomeBanner from './HomeBanner/HomeBanner';
 import PopularClass from './PopularClass/PopularClass';
 import AboutUs from './AboutUs/AboutUs';
 import TextComponent from './TestComponent/TextComponent';
+import PopularInstractor from './PopularInstractor/PopularInstractor';
 
 const Home = () => {
     return (
@@ -10,7 +11,8 @@ const Home = () => {
             <HomeBanner></HomeBanner>
             <PopularClass></PopularClass>
             <AboutUs></AboutUs>
-            <TextComponent></TextComponent>
+            <PopularInstractor></PopularInstractor>
+            {/* <TextComponent></TextComponent> */}
         </div>
     );
 };
