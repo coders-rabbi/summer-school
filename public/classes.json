@@ -1,1 +1,63 @@
-rsc
+[
+	{
+		"image": "https://i.ibb.co/WzBdpPb/jhankar.jpg",
+		"instructor_name": "Jhankar Mahahub",
+		"instructor_email": "jhankar@gmail.com",
+		"taken_classes": "rabbi, rabbi, rabbi",
+		"number_of_classes": 3
+	},
+	{
+	    "image": "https://i.ibb.co/zsWP0zC/rifat.jpg",
+		"instructor_name": "Sheikh Mahammad Rifat",
+		"instructor_email": "rifat@gmail.com",
+		"taken_classes": "rabbi, rabbi, rabbi",
+		"number_of_classes": 3
+	},
+
+	{
+        "image": "https://i.ibb.co/89mfNVn/Govinda.jpg",
+		"instructor_name": "Govinda",
+		"instructor_email": "govinda@gmail.com",
+		"taken_classes": "rabbi, rabbi, rabbi",
+		"number_of_classes": 3
+	},
+	{
+        "image": "https://i.ibb.co/hKPD6nq/susmita.jpg",
+		"instructor_name": "Susmita Sen",
+		"instructor_email": "susmita@gmail.com",
+		"taken_classes": "rabbi, rabbi, rabbi",
+		"number_of_classes": 3
+	},
+
+	{
+        "image": "https://i.ibb.co/cYM1WDw/Nora-Fatehi-FIFA.png",
+		"instructor_name": "Nora Fatehi",
+		"instructor_email": "nora_fatehi@gmail.com",
+		"taken_classes": "rabbi, rabbi, rabbi",
+		"number_of_classes": 3
+	},
+
+	{
+        "image": "https://i.ibb.co/brwYd43/daniela.jpg",
+		"instructor_name": "Deniela Blume",
+		"instructor_email": "deniela@gmail.com",
+		"taken_classes": "rabbi, rabbi, rabbi",
+		"number_of_classes": 3
+	},
+
+	{
+        "image": "https://i.ibb.co/rM9w9Hy/Tap-Dance.png",
+		"instructor_name": "Alex Zed",
+		"instructor_email": "alex@gmail.com",
+		"taken_classes": "rabbi, rabbi, rabbi",
+		"number_of_classes": 3
+	},
+
+	{
+        "image": "https://i.ibb.co/C1yh0X6/inner-dance-05.jpg",
+		"instructor_name": "Mycel Davide",
+		"instructor_email": "rifat@gmail.com",
+		"taken_classes": "rabbi, rabbi, rabbi",
+		"number_of_classes": 3
+	}
+]

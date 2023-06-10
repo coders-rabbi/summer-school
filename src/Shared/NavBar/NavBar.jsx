@@ -43,7 +43,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 <div>
                     {
-                        user && <img className='w-20 h-20 rounded-full border' src={user?.photoURL} alt="" />
+                        user && <img className='w-20 h-20 rounded-full border' title={user?.displayName} src={user?.photoURL} alt="" />
                     }
                 </div>
             </div>
