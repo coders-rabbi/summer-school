@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import registerImage from "../../assets/login/login.svg"
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const { createUser, updateUserProfile, googleSingIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = event => {
         event.preventDefault();
@@ -25,15 +26,14 @@ const Register = () => {
                 updateUserProfile(name, photo)
                 toast("Your account create Successfuly!");
                 form.reset();
+                navigate('/')
             })
             .catch(Error => {
                 toast(Error.message);
             })
     }
 
-    const handleGoogleSingIn = () => {
-        googleSingIn(); 
-    }
+
 
 
     return (
@@ -79,8 +79,8 @@ const Register = () => {
                         </div>
                     </form>
                     <div className='mx-auto flex gap-6 mb-4'>
+                        <button onClick={googleSingIn} className="btn btn-circle text-3xl"><FaGoogle /></button>
                         <button className="btn btn-circle text-3xl"><FaGithub /></button>
-                        <button className="btn btn-circle text-3xl"><FaGoogle /></button>
                     </div>
                     <div className='text-center mb-7'>
                         <p>Already Have an Account? <Link to="/login">Login</Link></p>
