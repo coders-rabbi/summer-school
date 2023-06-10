@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile, googleSingIn } = useContext(AuthContext);
 
     const handleRegister = event => {
         event.preventDefault();
@@ -15,21 +15,27 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const photoUrl = form.photo.value;
-        const userDetails = { name, email, password, photoUrl }
+        const photo = form.photo.value;
+        const userDetails = { name, email, password, photo }
 
-        
+
         createUser(email, password)
             .then(result => {
                 const loggedInUser = result.user;
+                updateUserProfile(name, photo)
                 toast("Your account create Successfuly!");
                 form.reset();
             })
             .catch(Error => {
                 toast(Error.message);
             })
-
     }
+
+    const handleGoogleSingIn = () => {
+        googleSingIn(); 
+    }
+
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col md:flex-row justify-center">
