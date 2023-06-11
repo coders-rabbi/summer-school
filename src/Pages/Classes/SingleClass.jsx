@@ -8,13 +8,38 @@ const SingleClass = ({ cls }) => {
     const { user } = useContext(AuthContext);
     console.log(cls);
 
-    const handleAleart = () => {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Login!'
-        })
+    const handleEnrlledCourses = (cls) => {
+
+        if (user && user.email) {
+            const enrolledCourse = {courseID: _id, courseName: name, price: price, instructor_name: instructor_name, image: image, user_email: user.email}
+            console.log(enrolledCourse);
+            fetch('http://localhost:5000/enrolled-courses', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(enrolledCourse)
+            })
+        }
     }
+
+
+
+
+
+
+
+
+
+
+    // TODO
+    // const handleAleart = () => {
+    //     Swal.fire({
+    //         icon: 'error',
+    //         title: 'Oops...',
+    //         text: 'Please Login!'
+    //     })
+    // }
 
     return (
         <div>
@@ -33,7 +58,7 @@ const SingleClass = ({ cls }) => {
                         {user ?
                             <button className={
                                 seats < 1 ? "btn btn-disabled " : "btn bg-[#f9782e]"
-                            }>Enroll</button>
+                            } onClick={() => { handleEnrlledCourses(cls) }}>Enroll</button>
                             :
                             <>
                                 <button onClick={handleAleart} className='btn'>Enrrol</button>
