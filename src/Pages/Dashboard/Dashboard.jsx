@@ -3,8 +3,8 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { FaCheckSquare } from "react-icons/fa";
 import useEnrolledCourse from '../../Hooks/useEnrolledCourse';
 import SingleEnrolledCourse from './SingleEnrolledCourse/SingleEnrolledCourse';
-import { Link, Outlet } from 'react-router-dom';
-import { FaCartPlus } from 'react-icons/fa';
+import { NavLink, Outlet } from 'react-router-dom';
+import { FaCartPlus, FaHome } from 'react-icons/fa';
 import { FcApproval } from "react-icons/fc";
 
 const Dashboard = () => {
@@ -33,16 +33,17 @@ const Dashboard = () => {
                 <hr />
                 <div className='flex flex-col items-start gap-4'>
                     <ul className='menu gap-3'>
-                        <li className='text-xl '><Link to="/dashboard"><FaCartPlus/> My Selected Course</Link></li>
-                        <li className='text-xl'><Link to="my-Cart"><FcApproval/>My Enrolled Course</Link></li>
-                        <li><Link to="my-Cart">Rabbi</Link></li>
+                        <li className='text-xl'><NavLink to="my-Cart"><FaCartPlus /> My Selected Course</NavLink></li>
+                        <li className='text-xl'><NavLink to="enrolled-course"><FcApproval />My Enrolled Course</NavLink></li>
+                        <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
                     </ul>
                 </div>
 
             </div>
             <Outlet></Outlet>
+
             <div className='bg-white rounded-md col-start-2 col-end-5 p-10'>
-                <h1 className='text-4xl font-serif text-center font-semibold mb-5'>My Selected Course</h1>
+                {/* <h1 className='text-4xl font-serif text-center font-semibold mb-5'>My Selected Course</h1>
                 <table className="table w-full">
                     <thead>
                         <tr className="grid md:grid-cols-5 rounded-md justify-items-center mb-5 bg-slate-200">
@@ -61,7 +62,7 @@ const Dashboard = () => {
                         key={course._id}
                         course={course}
                     ></SingleEnrolledCourse>)
-                }
+                } */}
 
             </div>
         </div>

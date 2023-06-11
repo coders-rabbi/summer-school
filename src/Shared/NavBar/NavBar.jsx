@@ -9,12 +9,14 @@ const NavBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+        
         <div className='flex items-center'>
             {
                 user ?
-                    // <button onClick={() => { logOut() }} type="submit" className="btn">LogOut</button>
-                    <Link><li className='font-bold bg-warning py-2 px-2 rounded-lg' onClick={() => { logOut() }} >LogOut</li></Link>
+                    <>
+                    <li><Link to="dashboard/my-Cart">Dashboard</Link></li>
+                    <Link><li className='font-bold py-2 px-2 rounded-lg' onClick={() => { logOut() }} >LogOut</li></Link>
+                    </>
                     :
                     <>
                         <li><Link to="/login">Login</Link></li>

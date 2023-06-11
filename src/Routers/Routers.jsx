@@ -11,6 +11,8 @@ import Classes from "../Pages/Classes/Classes";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import TextComponent from "../Pages/Home/TestComponent/TextComponent";
+import MySelectedCourse from "../Pages/Dashboard/MySelectedCourse/MySelectedCourse";
+import MyEnrollCoures from "../Pages/Dashboard/MyEnrollCourse/MyEnrollCoures";
 
 
 export const router = createBrowserRouter([
@@ -49,9 +51,14 @@ export const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                path: 'my-Cart',
-                element: <TextComponent></TextComponent>
-            }
+                path: '/dashboard/my-Cart',
+                element: <MySelectedCourse></MySelectedCourse>
+            },
+            {
+                path: 'enrolled-course',
+                element: <MyEnrollCoures></MyEnrollCoures>
+            },
+            
         ]
     }
 ]);

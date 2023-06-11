@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Swal from "sweetalert2";
 
 const Register = () => {
     const { createUser, updateUserProfile, googleSingIn } = useContext(AuthContext);
@@ -24,12 +25,37 @@ const Register = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 updateUserProfile(name, photo)
-                toast("Your account create Successfuly!");
-                form.reset();
-                navigate('/login')
+                    .then(() => {
+                        const userInfo = { userName: name, userEmail: email, roll: "student" }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify(userInfo)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data);
+                                if (data.insertedId) {
+                                    form.reset();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Successfully Created Account',
+                                        text: 'Got to login page!',
+                                    })
+                                    navigate('/')
+                                }
+                            })
+                    })
             })
             .catch(Error => {
-                toast(Error.message);
+                const rabbi = "Bangladesh"
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: (Error.message),
+                })
             })
     }
 
