@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useEnrolledCourse from '../../../Hooks/useEnrolledCourse';
 
 const SingleEnrolledCourse = ({ course }) => {
     const { _id, courseName, price, instructor_name, image } = course;
+    const [, refetch] = useEnrolledCourse();
 
 
     const handleDelete = id => {
@@ -11,6 +13,7 @@ const SingleEnrolledCourse = ({ course }) => {
         })
         .then(res => res.json())
         .then(data => {
+            refetch();
             console.log(data);
         })
     }
