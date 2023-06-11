@@ -11,7 +11,7 @@ const SingleClass = ({ cls }) => {
     const handleEnrlledCourses = (cls) => {
 
         if (user && user.email) {
-            const enrolledCourse = {courseID: _id, courseName: name, price: price, instructor_name: instructor_name, image: image, user_email: user.email}
+            const enrolledCourse = { courseID: _id, courseName: name, price: price, instructor_name: instructor_name, image: image, user_email: user.email }
             console.log(enrolledCourse);
             fetch('http://localhost:5000/enrolled-courses', {
                 method: 'POST',
@@ -20,6 +20,15 @@ const SingleClass = ({ cls }) => {
                 },
                 body: JSON.stringify(enrolledCourse)
             })
+                .then(res => res.json())
+                .then(data => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successfull',
+                        text: 'Course successfully added.Go to Dashboard',
+                    })
+                    console.log(data);
+                })
         }
     }
 

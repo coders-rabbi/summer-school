@@ -26,7 +26,7 @@ const Register = () => {
                 updateUserProfile(name, photo)
                 toast("Your account create Successfuly!");
                 form.reset();
-                navigate('/')
+                navigate('/login')
             })
             .catch(Error => {
                 toast(Error.message);

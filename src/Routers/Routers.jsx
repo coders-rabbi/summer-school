@@ -10,6 +10,7 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import TextComponent from "../Pages/Home/TestComponent/TextComponent";
 
 
 export const router = createBrowserRouter([
@@ -38,13 +39,19 @@ export const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: "/dashboard",
-                element: <Dashboard></Dashboard>
-            },
-            {
                 path: "*",
                 element: <Error></Error>
             }
         ]
     },
+    {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'my-Cart',
+                element: <TextComponent></TextComponent>
+            }
+        ]
+    }
 ]);
