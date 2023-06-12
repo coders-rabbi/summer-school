@@ -68,7 +68,7 @@ const Dashboard = () => {
                                         <>
                                             <ul className='menu gap-5 mt-10'>
                                                 <li className='text-xl'><NavLink to="allUsers"><FaUsers />Manage Users</NavLink></li>
-                                                <li className='text-xl'><NavLink to="/"><GiBookAura />Manage Classes</NavLink></li>
+                                                <li className='text-xl'><NavLink to="manageClasses"><GiBookAura />Manage Classes</NavLink></li>
                                                 <li className='text-xl'><NavLink to="/"><FaHome />Back To Home</NavLink></li>
                                             </ul>
                                         </>

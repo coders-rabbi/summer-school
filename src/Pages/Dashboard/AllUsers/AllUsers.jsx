@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const AllUsers = () => {
     const { data: users = [], refetch } = useQuery(['users'], async () => {
@@ -8,13 +7,50 @@ const AllUsers = () => {
         return res.json();
     })
 
-    const handleRoleChange = () => {
-        console.log(object);
+    const handleMakeAdmin = id => {
+        const updateRole = { userId: id, role: "admin" }
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateRole)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'This User Admin Now',
+                    })
+                }
+            })
     }
 
-    const handleUserDelete = user => {
-        console.log(user);
+
+
+    const handleMakeInstructor = id => {
+        const updateRole = { userId: id, role: "instructor" }
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateRole)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'This User Instructor Now',
+                    })
+                }
+            })
     }
+
 
     return (
         <div className='col-start-2 col-end-5 p-10'>
@@ -25,8 +61,8 @@ const AllUsers = () => {
                         <th className="bg-slate-200 font-josefin text-xl">SERIAL</th>
                         <th className="bg-slate-200 font-josefin text-xl">NAME</th>
                         <th className="bg-slate-200 font-josefin text-xl">EMAIL</th>
-                        <th className="bg-slate-200 font-josefin text-xl">ROLE</th>
-                        <th className="bg-slate-200 font-josefin text-xl">ACTION</th>
+                        <th className="bg-slate-200 font-josefin text-xl">ADMIN</th>
+                        <th className="bg-slate-200 font-josefin text-xl">INSTRUCTOR</th>
                     </tr>
                 </thead>
             </table>
@@ -39,26 +75,21 @@ const AllUsers = () => {
                         {
                             user.role === 'admin' ? "Admin"
                                 :
-                                (
-                                    <button
-                                        title={user.role}
-                                        onClick={() => handleRoleChange(user._id)}
-                                        className={
-                                            user.role === 'admin' || user.role === 'instrucotr' ? 'btn btn-disabled bg-orange-600 text-white'
-                                                :
-                                                'btn btn-primary bg-red-600 text-white'
-                                        }
-
-                                    >
-                                        {
-                                            user.role === 'instructor' || user.role === 'student' ? "Make Admin" : "Instructor"
-                                        }
-                                    </button>
-                                )
+                                <button
+                                    onClick={() => handleMakeAdmin(user._id)}
+                                    className='btn btn-primary bg-red-600 text-white'
+                                >Make Admin</button>
                         }
                     </td>
                     <td className='text-2xl'>
-                        <FaTrashAlt onClick={() => handleUserDelete(user)} />
+                        {
+                            user.role === 'instructor' ? "Instructor"
+                                :
+                                <button
+                                    onClick={() => { handleMakeInstructor(user._id) }}
+                                    className='btn btn-primary bg-red-600 text-white'
+                                >Make Instructor</button>
+                        }
                     </td>
                 </tr>)
             }

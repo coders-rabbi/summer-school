@@ -14,6 +14,7 @@ import TextComponent from "../Pages/Home/TestComponent/TextComponent";
 import MySelectedCourse from "../Pages/Dashboard/MySelectedCourse/MySelectedCourse";
 import MyEnrollCoures from "../Pages/Dashboard/MyEnrollCourse/MyEnrollCoures";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import ManageClass from "../Pages/Dashboard/ManageClass/ManageClass";
 
 
 export const router = createBrowserRouter([
@@ -62,6 +63,11 @@ export const router = createBrowserRouter([
             {
                 path: 'allUsers',
                 element: <AllUsers></AllUsers>
+            },
+            
+            {
+                path: 'manageClasses',
+                element: <ManageClass></ManageClass>
             },
             
         ]

@@ -9,7 +9,6 @@ const SingleClass = ({ cls }) => {
     console.log(cls);
 
     const handleEnrlledCourses = (cls) => {
-
         if (user && user.email) {
             const enrolledCourse = { courseID: _id, courseName: name, price: price, instructor_name: instructor_name, image: image, user_email: user.email }
             console.log(enrolledCourse);

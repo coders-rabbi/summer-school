@@ -33,9 +33,6 @@ const SingleEnrolledCourse = ({ course }) => {
         });
     };
 
-    const handleAddToCart = () =>{
-
-    }
 
     return (
         <div>
