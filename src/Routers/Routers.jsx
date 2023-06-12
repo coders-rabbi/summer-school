@@ -13,6 +13,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import TextComponent from "../Pages/Home/TestComponent/TextComponent";
 import MySelectedCourse from "../Pages/Dashboard/MySelectedCourse/MySelectedCourse";
 import MyEnrollCoures from "../Pages/Dashboard/MyEnrollCourse/MyEnrollCoures";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 
 export const router = createBrowserRouter([
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
             {
                 path: 'enrolled-course',
                 element: <MyEnrollCoures></MyEnrollCoures>
+            },
+            {
+                path: 'allUsers',
+                element: <AllUsers></AllUsers>
             },
             
         ]

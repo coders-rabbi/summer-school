@@ -4,7 +4,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext)
-    console.log(user?.photoURL);
+    const isAdmin = true;
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
@@ -14,7 +14,10 @@ const NavBar = () => {
             {
                 user ?
                     <>
-                    <li><Link to="dashboard/my-Cart">Dashboard</Link></li>
+                    {
+                        isAdmin ? <li><Link to="dashboard/allUsers">Dashboard</Link></li> :
+                        <li><Link to="dashboard/my-Cart">Dashboard</Link></li>
+                    }
                     <Link><li className='font-bold py-2 px-2 rounded-lg' onClick={() => { logOut() }} >LogOut</li></Link>
                     </>
                     :

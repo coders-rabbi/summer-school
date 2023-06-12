@@ -66,7 +66,7 @@ const SingleEnrolledCourse = ({ course }) => {
                         </td>
 
                         <td>
-                            <Link to={`/toydetails/${_id}`} ><button className="btn btn-active btn-ghost">Due</button></Link>
+                            <Link to={`/payment/${_id}`} ><button className="btn btn-active btn-ghost">Due</button></Link>
                         </td>
                     </tr>
                 </tbody>

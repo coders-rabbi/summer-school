@@ -11,6 +11,8 @@ const Dashboard = () => {
     const { user } = useContext(AuthContext);
     const [MyCourses] = useEnrolledCourse();
 
+    const isAdmin = true;
+
     return (
         <div className='md:grid grid-cols-4 gap-4'>
             <div className='bg-white shadow-md p-10 rounded-md text-center h-screen '>
@@ -32,11 +34,24 @@ const Dashboard = () => {
                 </div>
                 <hr />
                 <div className='flex flex-col items-start gap-4'>
-                    <ul className='menu gap-3'>
-                        <li className='text-xl'><NavLink to="my-Cart"><FaCartPlus /> My Selected Course</NavLink></li>
-                        <li className='text-xl'><NavLink to="enrolled-course"><FcApproval />My Enrolled Course</NavLink></li>
-                        <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
-                    </ul>
+                    {
+                        isAdmin ?
+                            <>
+                                <ul className='menu gap-3'>
+                                    <li className='text-xl'><NavLink to="my-Cart"><FaCartPlus /> My Selected Course</NavLink></li>
+                                    <li className='text-xl'><NavLink to="enrolled-course"><FcApproval />My Enrolled Course</NavLink></li>
+                                    <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
+                                </ul>
+                            </>
+                            :
+                            <>
+                                <ul className='menu gap-3'>
+                                    <li className='text-xl'><NavLink to="my-Cart"><FaCartPlus /> My Selected Course</NavLink></li>
+                                    <li className='text-xl'><NavLink to="enrolled-course"><FcApproval />My Enrolled Course</NavLink></li>
+                                    <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
+                                </ul>
+                            </>
+                    }
                 </div>
 
             </div>

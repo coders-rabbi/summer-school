@@ -3,13 +3,14 @@ import loginPhoto from "../../assets/login/login.png";
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaGithub, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Social from "./Social";
 
 const Login = () => {
     const [visible, setVisible] = useState(false);
-    const { signIn, googleSingIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
 
 
     const location = useLocation();
@@ -79,10 +80,7 @@ const Login = () => {
                                 </div>
                             </div>
                         </form>
-                        <div className='mx-auto flex gap-6 mb-4'>
-                            <button onClick={googleSingIn} className="btn btn-circle text-3xl"><FaGoogle /></button>
-                            <button className="btn btn-circle text-3xl"><FaGithub /></button>
-                        </div>
+                        <Social></Social>
                         <div className='text-center mb-7'>
                             <p>New to Art In Motion ? <Link to="/register">Register</Link></p>
                         </div>
