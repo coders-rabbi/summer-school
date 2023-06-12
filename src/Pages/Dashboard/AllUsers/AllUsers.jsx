@@ -8,6 +8,10 @@ const AllUsers = () => {
         return res.json();
     })
 
+    const handleRoleChange = () => {
+        console.log(object);
+    }
+
     const handleUserDelete = user => {
         console.log(user);
     }
@@ -34,19 +38,23 @@ const AllUsers = () => {
                     <td className='text-2xl'>
                         {
                             user.role === 'admin' ? "Admin"
-                            :
-                            (
-                                <button
-                                    title={user.role}
-                                    onClick={() => handleMakeADmin(user._id)}
-                                    className={
-                                        user.role === 'admin' || user.role === 'instrucotr' ? 'btn btn-disabled bg-orange-600 text-white'
-                                        :
-                                        'btn btn-primary bg-red-600 text-white'
-                                    }
+                                :
+                                (
+                                    <button
+                                        title={user.role}
+                                        onClick={() => handleRoleChange(user._id)}
+                                        className={
+                                            user.role === 'admin' || user.role === 'instrucotr' ? 'btn btn-disabled bg-orange-600 text-white'
+                                                :
+                                                'btn btn-primary bg-red-600 text-white'
+                                        }
 
-                                >Make Admin</button>
-                            )
+                                    >
+                                        {
+                                            user.role === 'instructor' || user.role === 'student' ? "Make Admin" : "Instructor"
+                                        }
+                                    </button>
+                                )
                         }
                     </td>
                     <td className='text-2xl'>
@@ -54,6 +62,7 @@ const AllUsers = () => {
                     </td>
                 </tr>)
             }
+
         </div>
     );
 };

@@ -1,17 +1,29 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { FaCheckSquare } from "react-icons/fa";
+import { FaCheckSquare, FaUsers } from "react-icons/fa";
 import useEnrolledCourse from '../../Hooks/useEnrolledCourse';
-import SingleEnrolledCourse from './SingleEnrolledCourse/SingleEnrolledCourse';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaCartPlus, FaHome } from 'react-icons/fa';
 import { FcApproval } from "react-icons/fc";
+import { useQuery } from '@tanstack/react-query';
+import { GiBookAura } from "react-icons/gi";
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
     const [MyCourses] = useEnrolledCourse();
 
-    const isAdmin = true;
+    const { data: allUsers = [], refetch } = useQuery(['users'], async () => {
+        const res = await fetch('http://localhost:5000/users')
+        return res.json();
+    })
+
+    const loggedInUser = user?.email;
+
+    const userRole = allUsers.find(item => item.userEmail === loggedInUser)
+    const role = userRole?.role;
+
+
+    const isAdmin = false;
 
     return (
         <div className='md:grid grid-cols-4 gap-4'>
@@ -22,7 +34,7 @@ const Dashboard = () => {
                 </div>
                 <h2 className='text-2xl font-josefin mt-8'>{user?.displayName}</h2>
                 <div className='flex justify-center mt-2 items-center gap-2 font-semibold text-gray-500 font-serif mb-5'>
-                    <p>Student Account</p><FaCheckSquare className='text-primary' />
+                    <p>{role} Account</p><FaCheckSquare className='text-primary' />
                 </div>
                 <hr className='bg-black' />
                 <h1 className='text-3xl font-serif mt-5 font-bold'>Student Analytic</h1>
@@ -35,7 +47,7 @@ const Dashboard = () => {
                 <hr />
                 <div className='flex flex-col items-start gap-4'>
                     {
-                        isAdmin ?
+                        role === 'student' ?
                             <>
                                 <ul className='menu gap-3'>
                                     <li className='text-xl'><NavLink to="my-Cart"><FaCartPlus /> My Selected Course</NavLink></li>
@@ -45,12 +57,25 @@ const Dashboard = () => {
                             </>
                             :
                             <>
-                                <ul className='menu gap-3'>
-                                    <li className='text-xl'><NavLink to="my-Cart"><FaCartPlus /> My Selected Course</NavLink></li>
-                                    <li className='text-xl'><NavLink to="enrolled-course"><FcApproval />My Enrolled Course</NavLink></li>
-                                    <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
-                                </ul>
+                                {
+                                    role === 'instrucotr' ?
+                                        <>
+                                            <ul className='menu'>
+                                                <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
+                                            </ul>
+                                        </>
+                                        :
+                                        <>
+                                            <ul className='menu gap-5 mt-10'>
+                                                <li className='text-xl'><NavLink to="allUsers"><FaUsers />Manage Users</NavLink></li>
+                                                <li className='text-xl'><NavLink to="/"><GiBookAura />Manage Classes</NavLink></li>
+                                                <li className='text-xl'><NavLink to="/"><FaHome />Back To Home</NavLink></li>
+                                            </ul>
+                                        </>
+                                }
                             </>
+
+
                     }
                 </div>
 
@@ -58,26 +83,6 @@ const Dashboard = () => {
             <Outlet></Outlet>
 
             <div className='bg-white rounded-md col-start-2 col-end-5 p-10'>
-                {/* <h1 className='text-4xl font-serif text-center font-semibold mb-5'>My Selected Course</h1>
-                <table className="table w-full">
-                    <thead>
-                        <tr className="grid md:grid-cols-5 rounded-md justify-items-center mb-5 bg-slate-200">
-                            <th className="bg-slate-200">Delete</th>
-                            <th className="bg-slate-200">picture</th>
-                            <th className="bg-slate-200">courseName</th>
-                            <th className="bg-slate-200">instructor_name</th>
-                            <th className="bg-slate-200">Payment</th>
-
-                        </tr>
-                    </thead>
-                </table>
-
-                {
-                    MyCourses.map(course => <SingleEnrolledCourse
-                        key={course._id}
-                        course={course}
-                    ></SingleEnrolledCourse>)
-                } */}
 
             </div>
         </div>
@@ -85,3 +90,12 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+
+
+{/* <ul className='menu gap-3'>
+    <li className='text-xl'><NavLink to="my-Cart"><FaCartPlus /> My Selected Course</NavLink></li>
+    <li className='text-xl'><NavLink to="enrolled-course"><FcApproval />My Enrolled Course</NavLink></li>
+    <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
+</ul> */}
