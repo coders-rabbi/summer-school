@@ -15,7 +15,7 @@ const Social = () => {
         googleSingIn()
             .then(async (result) => {
                 const loggedUser = result.user;
-                const userInfo = { userName: loggedUser.displayName, userEmail: loggedUser.email, roll: "student" }
+                const userInfo = { userName: loggedUser.displayName, userEmail: loggedUser.email, role: "student" }
                 console.log(userInfo);
 
                 fetch('http://localhost:5000/users', {
