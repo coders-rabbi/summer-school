@@ -1,12 +1,19 @@
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useContext } from 'react';
 import Swal from 'sweetalert2';
+import useUsers from '../../Hooks/useUsers';
 
 const SingleClass = ({ cls }) => {
+    const [allUsers] = useUsers();
     const { _id, image, name, instructor_name, available_seats, price } = cls;
+
     const { user } = useContext(AuthContext);
-    // console.log(cls);
+    const loggedInUser = user?.email;
+
+    const userRole = allUsers.find(item => item.userEmail === loggedInUser)
+    const role = userRole?.role;
+    // console.log(object);
+
 
     const handleEnrlledCourses = (cls) => {
 
@@ -33,7 +40,15 @@ const SingleClass = ({ cls }) => {
     }
 
 
-    
+    const handleWithOurLogin = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Opps...',
+            text: 'Please Login First',
+        })
+    }
+
+
     return (
         <div>
             <div className={
@@ -41,21 +56,35 @@ const SingleClass = ({ cls }) => {
 
             }>
                 <img className='h-60' src={image} alt="" />
-                <div className='p-5'>   
+                <div className='p-5'>
                     <h2 className='text-3xl font-semibold font-josefin'>{name}</h2>
                     <h3 className='text-xl font-semibold'>Instructor: <small>{instructor_name}</small></h3>
                     <h3 className='text-xl'>Available seats: <strong>{available_seats}</strong> </h3>
                     <div className='flex justify-between items-center'>
                         <p className='text-xl'>Price: <strong>${price}</strong></p>
 
-                        {user ?
-                            <button className={
-                                available_seats < 1 ? "btn btn-disabled " : "btn bg-[#f9782e]"
-                            } onClick={() => { handleEnrlledCourses(cls) }}>Enroll</button>
-                            :
-                            <>
-                                <button onClick={handleAleart} className='btn'>Enrrol</button>
-                            </>
+                        {
+                            role === 'admin' || role === 'instructor' ?
+                                <></>
+                                :
+                                <>
+                                    {
+                                        user ?
+                                            <>
+                                                <>
+                                                    <button className={
+                                                        available_seats < 1 ? "btn btn-disabled " : "btn bg-[#f9782e]"
+                                                    } onClick={() => { handleEnrlledCourses(cls) }}>Enroll</button>
+                                                </>
+                                            </>
+                                            :
+                                            <>
+                                                <button
+                                                    onClick={handleWithOurLogin}
+                                                    className='btn btn-error'>Enroll</button>
+                                            </>
+                                    }
+                                </>
                         }
 
                     </div>
