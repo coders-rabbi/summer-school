@@ -3,7 +3,7 @@ import React from 'react';
 const InstructorPersonalClass = () => {
     return (
         <div>
-            <h1>This is Instructor Personal classe page!</h1>
+            <h1 className='text-4xl text-center font-josefin mb-10'>My Added Courses</h1>
         </div>
     );
 };

@@ -48,7 +48,7 @@ const Dashboard = () => {
                         role === 'student' ?
                             <>
                                 <ul className='menu gap-3'>
-                                    <li className='text-xl'><NavLink to="my-Cart"><FaCartPlus /> My Selected Course</NavLink></li>
+                                    <li className='text-xl'><NavLink to="my-selectClass"><FaCartPlus /> My Selected Course</NavLink></li>
                                     <li className='text-xl'><NavLink to="enrolled-course"><FcApproval />My Enrolled Course</NavLink></li>
                                     <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
                                 </ul>
@@ -56,9 +56,11 @@ const Dashboard = () => {
                             :
                             <>
                                 {
-                                    role === 'instrucotr' ?
+                                    role === 'instructor' ?
                                         <>
                                             <ul className='menu'>
+                                                <li className='text-xl'><NavLink to="add-class"><FaUsers />Add Class</NavLink></li>
+                                                <li className='text-xl'><NavLink to="instructor-class"><FaUsers />My Classes</NavLink></li>
                                                 <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
                                             </ul>
                                         </>
