@@ -7,7 +7,7 @@ import SectionTitle from '../../SectionTitile/SectionTitle';
 
 const Classes = () => {
     const [classes] = useClasses()
-    console.log(classes);
+    
     return (
         <div>
             <div className='relative mb-12'>

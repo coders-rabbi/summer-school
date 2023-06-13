@@ -15,6 +15,8 @@ import MySelectedCourse from "../Pages/Dashboard/MySelectedCourse/MySelectedCour
 import MyEnrollCoures from "../Pages/Dashboard/MyEnrollCourse/MyEnrollCoures";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import ManageClass from "../Pages/Dashboard/ManageClass/ManageClass";
+import AddClasses from "../Pages/Dashboard/AddClasses/AddClasses";
+import InstructorPersonalClass from "../Pages/Dashboard/InstructorPersonalClass/InstructorPersonalClass";
 
 
 export const router = createBrowserRouter([
@@ -53,7 +55,7 @@ export const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                path: '/dashboard/my-Cart',
+                path: '/dashboard/my-selectClass',
                 element: <MySelectedCourse></MySelectedCourse>
             },
             {
@@ -64,12 +66,18 @@ export const router = createBrowserRouter([
                 path: 'allUsers',
                 element: <AllUsers></AllUsers>
             },
-            
             {
                 path: 'manageClasses',
                 element: <ManageClass></ManageClass>
             },
-            
+            {
+                path: 'add-class',
+                element: <AddClasses></AddClasses>
+            },
+            {
+                path: 'instructor-class',
+                element: <InstructorPersonalClass></InstructorPersonalClass>
+            },
         ]
     }
 ]);

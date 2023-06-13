@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { FaCheckSquare, FaUsers } from "react-icons/fa";
-import useEnrolledCourse from '../../Hooks/useEnrolledCourse';
+// import useEnrolledCourse from '../../Hooks/useEnrolledCourse';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaCartPlus, FaHome } from 'react-icons/fa';
 import { FcApproval } from "react-icons/fc";
@@ -10,7 +10,7 @@ import { GiBookAura } from "react-icons/gi";
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
-    const [MyCourses] = useEnrolledCourse();
+    // const [MyCourses] = useEnrolledCourse([]);
 
     const { data: allUsers = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users')
@@ -22,8 +22,6 @@ const Dashboard = () => {
     const userRole = allUsers.find(item => item.userEmail === loggedInUser)
     const role = userRole?.role;
 
-
-    const isAdmin = false;
 
     return (
         <div className='md:grid grid-cols-4 gap-4'>
@@ -40,9 +38,9 @@ const Dashboard = () => {
                 <h1 className='text-3xl font-serif mt-5 font-bold'>Student Analytic</h1>
 
                 <div className='text-left mt-10'>
-                    <h3 className='text-xl font-semibold mb-3'>Enrroled Courses: {MyCourses.length}</h3>
+                    <h3 className='text-xl font-semibold mb-3'>Enrroled Courses: </h3>
                     <h3 className='text-xl font-semibold mb-3'>Complete Courses: 0</h3>
-                    <h3 className='text-xl font-semibold mb-3'>Payment Due: {MyCourses.length}</h3>
+                    <h3 className='text-xl font-semibold mb-3'>Payment Due: </h3>
                 </div>
                 <hr />
                 <div className='flex flex-col items-start gap-4'>

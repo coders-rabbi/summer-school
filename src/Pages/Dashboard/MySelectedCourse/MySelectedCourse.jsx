@@ -1,9 +1,12 @@
 import React from 'react';
-import useEnrolledCourse from '../../../Hooks/useEnrolledCourse';
 import SingleEnrolledCourse from '../SingleEnrolledCourse/SingleEnrolledCourse';
+import useEnrolledCourse from '../../../Hooks/useEnrolledCourse';
 
 const MySelectedCourse = () => {
-    const [MyCourses] = useEnrolledCourse();
+
+    const [SelectedCourse] = useEnrolledCourse();
+
+
     return (
         <div className='col-start-2 col-end-5 p-10 bg-white rounded-md'>
             <h1 className='text-center text-5xl font-serif mb-14'>My Selected Course</h1>
@@ -22,7 +25,7 @@ const MySelectedCourse = () => {
                 </thead>
             </table>
             {
-                MyCourses.map(course => <SingleEnrolledCourse
+                SelectedCourse.map(course => <SingleEnrolledCourse
                     key={course._id}
                     course={course}
                 ></SingleEnrolledCourse>)

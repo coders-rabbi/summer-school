@@ -6,11 +6,12 @@ import Swal from 'sweetalert2';
 const SingleClass = ({ cls }) => {
     const { _id, image, name, instructor_name, seats, price } = cls;
     const { user } = useContext(AuthContext);
-    console.log(cls);
+    // console.log(cls);
 
     const handleEnrlledCourses = (cls) => {
+
         if (user && user.email) {
-            const enrolledCourse = { courseID: _id, courseName: name, price: price, instructor_name: instructor_name, image: image, user_email: user.email }
+            const enrolledCourse = { courseID: _id, courseName: name, price: price, instructor_name: instructor_name, image: image, user_email: user.email };
             console.log(enrolledCourse);
             fetch('http://localhost:5000/enrolled-courses', {
                 method: 'POST',
@@ -32,23 +33,7 @@ const SingleClass = ({ cls }) => {
     }
 
 
-
-
-
-
-
-
-
-
-    // TODO
-    // const handleAleart = () => {
-    //     Swal.fire({
-    //         icon: 'error',
-    //         title: 'Oops...',
-    //         text: 'Please Login!'
-    //     })
-    // }
-
+    
     return (
         <div>
             <div className={

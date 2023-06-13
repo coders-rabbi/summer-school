@@ -1,24 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import useUsers from '../../Hooks/useUsers';
 
 const NavBar = () => {
+    // const { role, setRole } = useState();
     const { user, logOut } = useContext(AuthContext)
-    const isAdmin = true;
+
+    const [usersAll] = useUsers();
+
+    const userRole = usersAll.find(item => item.userEmail === user?.email)
+    const role = userRole?.role;
+
+
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        
+
         <div className='flex items-center'>
             {
                 user ?
                     <>
-                    {
-                        isAdmin ? <li><Link to="dashboard/allUsers">Dashboard</Link></li> :
-                        <li><Link to="dashboard/my-Cart">Dashboard</Link></li>
-                    }
-                    <Link><li className='font-bold py-2 px-2 rounded-lg' onClick={() => { logOut() }} >LogOut</li></Link>
+                        {
+                            role === 'admin' ? <li><Link to="dashboard/allUsers">Dashboard</Link></li> :
+                                <>
+                                    {
+                                        role === 'instructor' ? <li><Link to="dashboard/add-class">Dashboard</Link></li> : <li><Link to="dashboard/my-selectClass">Dashboard</Link></li>
+                                    }
+                                </>
+                        }
+                        <Link><li className='font-bold py-2 px-2 rounded-lg' onClick={() => { logOut() }} >LogOut</li></Link>
                     </>
                     :
                     <>
