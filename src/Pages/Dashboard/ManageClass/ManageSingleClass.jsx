@@ -1,13 +1,58 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
-const ManageSingleClass = ({ singleClass }) => {
+const ManageSingleClass = ({ singleClass, refetch }) => {
     const { _id, image, name, instructor_email, instructor_name, available_seats, price, status } = singleClass;
+
+    const handleConfirmed = id => {
+        const updateStatus = { userId: id, status: "confirmed" }
+        fetch(`http://localhost:5000/classes/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateStatus)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'This User Instructor Now',
+                    })
+                }
+            })
+    }
+
+    const handleDenied = id => {
+        const updateStatus = { userId: id, status: "denied" }
+        fetch(`http://localhost:5000/classes/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateStatus)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'This User Instructor Now',
+                    })
+                }
+            })
+    }
+
+
     return (
         <div>
             <table className="table w-full">
 
                 <tbody>
-                    <tr className='bg-[#EEEEEE] rounded-md grid md:grid-cols-8 mb-5 items-center shadow-lg'>
+                    <tr className='bg-[#EEEEEE] rounded-md grid md:grid-cols-9 mb-5 items-center shadow-lg'>
                         <td>
                             <img className='w-20 h-20 rounded-md' src={image} alt="" />
                         </td>
@@ -30,8 +75,21 @@ const ManageSingleClass = ({ singleClass }) => {
                             <p className='font-serif font-semibold'>{status}</p>
                         </td>
                         <td className='flex flex-col gap-2'>
-                            <button className='btn btn-xs bg-success'>Confirmed</button>
-                            <button className='btn btn-xs bg-warning'>Denied</button>
+                            <button
+                                onClick={() => handleConfirmed(_id)}
+                                className={
+                                    status === 'confirmed' || status === 'denied' ? 'btn-disabled' : 'btn btn-xs bg-success'
+                                }
+                            >Confirmed</button>
+                            <button
+                                onClick={() => handleDenied(_id)}
+                                className={
+                                    status === 'confirmed' || status === 'denied' ? 'btn-disabled' : 'btn btn-xs bg-warning'
+                                }
+                            >Denied</button>
+                        </td>
+                        <td>
+                            <button className="btn btn-sm bg-secondary text-white">Small</button>
                         </td>
                     </tr>
                 </tbody>
