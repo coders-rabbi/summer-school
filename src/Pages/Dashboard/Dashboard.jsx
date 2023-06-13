@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { FaCheckSquare, FaUsers } from "react-icons/fa";
+import { FaBook, FaCheckSquare, FaUsers } from "react-icons/fa";
 // import useEnrolledCourse from '../../Hooks/useEnrolledCourse';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaCartPlus, FaHome } from 'react-icons/fa';
 import { FcApproval } from "react-icons/fc";
 import { useQuery } from '@tanstack/react-query';
-import { GiBookAura } from "react-icons/gi";
+import { GiBookAura, GiBookCover } from "react-icons/gi";
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
@@ -59,8 +59,8 @@ const Dashboard = () => {
                                     role === 'instructor' ?
                                         <>
                                             <ul className='menu'>
-                                                <li className='text-xl'><NavLink to="add-class"><FaUsers />Add Class</NavLink></li>
-                                                <li className='text-xl'><NavLink to="instructor-class"><FaUsers />My Classes</NavLink></li>
+                                                <li className='text-xl'><NavLink to="add-class"><FaBook />Add Class</NavLink></li>
+                                                <li className='text-xl'><NavLink to="instructor-class"><GiBookCover />My Classes</NavLink></li>
                                                 <li className='text-xl'><NavLink to="/"><FaHome /> Back To Home</NavLink></li>
                                             </ul>
                                         </>

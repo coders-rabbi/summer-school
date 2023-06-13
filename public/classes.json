@@ -1,63 +1,128 @@
 [
 	{
-		"image": "https://i.ibb.co/WzBdpPb/jhankar.jpg",
-		"instructor_name": "Jhankar Mahahub",
+		"name": "Contemporary",
+		"image": "https://i.ibb.co/8rxhg15/inner-dance-01.jpg",
+		"instructor_name": "Jhankar Mahabub",
 		"instructor_email": "jhankar@gmail.com",
-		"taken_classes": "rabbi, rabbi, rabbi",
-		"number_of_classes": 3
+		"available_seats": "34",
+		"price": "120",
+		"status": "confirmed"
 	},
 	{
-	    "image": "https://i.ibb.co/zsWP0zC/rifat.jpg",
-		"instructor_name": "Sheikh Mahammad Rifat",
+		"name": "Ballet Jazz",
+		"image": "https://i.ibb.co/56GRkH5/inner-dance-02.jpg",
+		"instructor_name": "Sheikh Rifat Vai",
 		"instructor_email": "rifat@gmail.com",
-		"taken_classes": "rabbi, rabbi, rabbi",
-		"number_of_classes": 3
+		"available_seats": "34",
+		"price": "120",
+		"status": "confirmed"
 	},
-
 	{
-        "image": "https://i.ibb.co/89mfNVn/Govinda.jpg",
+		"name": "Latino",
+		"image": "https://i.ibb.co/4PLLs7Z/inner-dance-04.jpg",
 		"instructor_name": "Govinda",
 		"instructor_email": "govinda@gmail.com",
-		"taken_classes": "rabbi, rabbi, rabbi",
-		"number_of_classes": 3
+		"available_seats": "34",
+		"price": "120",
+		"status": "denied"
 	},
 	{
-        "image": "https://i.ibb.co/hKPD6nq/susmita.jpg",
+		"name": "Classi Ballet",
+		"image": "https://i.ibb.co/ZTrqJM5/inner-dance-03.jpg",
 		"instructor_name": "Susmita Sen",
 		"instructor_email": "susmita@gmail.com",
-		"taken_classes": "rabbi, rabbi, rabbi",
-		"number_of_classes": 3
+		"available_seats": "34",
+		"price": "120",
+		"status": "confirmed"
 	},
-
 	{
-        "image": "https://i.ibb.co/cYM1WDw/Nora-Fatehi-FIFA.png",
-		"instructor_name": "Nora Fatehi",
-		"instructor_email": "nora_fatehi@gmail.com",
-		"taken_classes": "rabbi, rabbi, rabbi",
-		"number_of_classes": 3
+		"name": "Breakdance",
+		"image": "https://i.ibb.co/C1yh0X6/inner-dance-05.jpg",
+		"instructor_name": "Nura Fatehi",
+		"instructor_email": "fatehi@gmail.com",
+		"available_seats": "34",
+		"price": "120",
+		"status": "panding"
 	},
-
 	{
-        "image": "https://i.ibb.co/brwYd43/daniela.jpg",
-		"instructor_name": "Deniela Blume",
-		"instructor_email": "deniela@gmail.com",
-		"taken_classes": "rabbi, rabbi, rabbi",
-		"number_of_classes": 3
+		"name": "Hip-Hop",
+		"image": "https://i.ibb.co/TMkPp9r/inner-dance-06.jpg",
+		"instructor_name": "Daniela Blume",
+		"instructor_email": "daniela@gmail.com",
+		"available_seats": "34",
+		"price": "120",
+		"status": "confirmed"
 	},
-
 	{
-        "image": "https://i.ibb.co/rM9w9Hy/Tap-Dance.png",
-		"instructor_name": "Alex Zed",
-		"instructor_email": "alex@gmail.com",
-		"taken_classes": "rabbi, rabbi, rabbi",
-		"number_of_classes": 3
-	},
-
-	{
-        "image": "https://i.ibb.co/C1yh0X6/inner-dance-05.jpg",
-		"instructor_name": "Mycel Davide",
+		"name": "Tap Dance",
+		"image": "https://i.ibb.co/rM9w9Hy/Tap-Dance.png",
+		"instructor_name": "Sheikh Rifat Vai",
 		"instructor_email": "rifat@gmail.com",
-		"taken_classes": "rabbi, rabbi, rabbi",
-		"number_of_classes": 3
+		"available_seats": "34",
+		"price": "120",
+		"status": "panding"
+	},
+	{
+		"name": "Folk Dance",
+		"image": "https://i.ibb.co/YkqN1nm/Folk-Dance.jpg",
+		"instructor_name": "Sheikh Rifat Vai",
+		"instructor_email": "rifat@gmail.com",
+		"available_seats": "34",
+		"price": "120",
+		"status": "confirmed"
+	},
+	{
+		"name": "Modern Dance",
+		"image": "https://i.ibb.co/P9zQfPt/Modern-Dance.jpg",
+		"instructor_name": "Sheikh Rifat Vai",
+		"instructor_email": "rifat@gmail.com",
+		"available_seats": "34",
+		"price": "120",
+		"status": "confirmed"
+	},
+	{
+		"name": "Swing Dance",
+		"image": "https://i.ibb.co/qm9pdpd/Swing-Dance.jpg",
+		"instructor_name": "Sheikh Rifat Vai",
+		"instructor_email": "rifat@gmail.com",
+		"available_seats": "34",
+		"price": "120",
+		"status": "panding"
+	},
+	{
+		"name": "Irish Dance",
+		"image": "https://i.ibb.co/WB0FRYD/Irish-Dance.jpg",
+		"instructor_name": "Sheikh Rifat Vai",
+		"instructor_email": "rifat@gmail.com",
+		"available_seats": "34",
+		"price": "120",
+		"status": "panding"
+	},
+	{
+		"name": "new dance",
+		"image": "https://i.ibb.co/0ByPyhB/ater-16.jpg",
+		"instructor_name": "Sheikh Rifat Vai",
+		"instructor_email": "rifat@gmail.com",
+		"available_seats": "15",
+		"price": "2500",
+		"status": "panding"
+	},
+	{
+		"name": "Rabbi Mia",
+		"image": "https://i.ibb.co/PWSRPVy/October-11-2021-in-the-Israeli-coastal-city-of-Herzliya-shows-unmanned-aerial-vehicles-UAV-or-drones.jpg",
+		"instructor_name": "Sheikh Rifat Vai",
+		"instructor_email": "rifat@gmail.com",
+		"available_seats": "50",
+		"price": "1200",
+		"status": "denied"
+	},
+	{
+		"name": "new dance",
+		"image": "https://i.ibb.co/0ByPyhB/ater-16.jpg",
+		"instructor_name": "Sheikh Rifat Vai",
+		"instructor_email": "rifat@gmail.com",
+		"available_seats": "34",
+		"price": "120",
+		"status": "confirmed"
 	}
 ]

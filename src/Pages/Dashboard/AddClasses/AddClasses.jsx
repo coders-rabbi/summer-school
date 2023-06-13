@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddClasses = () => {
     const { user } = useContext(AuthContext)
@@ -7,21 +8,38 @@ const AddClasses = () => {
     const handleAddClass = event => {
         event.preventDefault();
         const form = event.target;
-        const className = form.className.value;
-        const classImage = form.classImage.value;
-        const instructorName = form.instructorName.value;
-        const instructorEmail = form.instructorEmail.value;
-        const availableSeat = form.availableSeat.value;
+        const name = form.className.value;
+        const image = form.classImage.value;
+        const instructor_name = form.instructorName.value;
+        const instructor_email = form.instructorEmail.value;
+        const available_seats = form.availableSeat.value;
         const price = form.price.value;
-        const deatils = {classImage, className, instructorName, instructorEmail, availableSeat, price}
-        console.log(deatils);
+        const addClass = { name: name, image: image, instructor_name: instructor_name, instructor_email: instructor_email, available_seats: available_seats, price: price, status: 'panding' };
+
+        fetch('http://localhost:5000/classes', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(addClass)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Swal.fire(
+                    'Added Class!',
+                    'Your Class has been Added.',
+                    'success'
+                )
+                form.reset();
+            })
 
     }
     return (
         <div className='col-start-2 col-span-5 p-10'>
             <h1 className='text-4xl text-center font-josefin mb-10'> Add Your Class</h1>
             <form onSubmit={handleAddClass} className='m-20 px-16 py-20 bg-white '>
-            <h1 className='text-4xl text-center font-josefin mb-10'> Add A Class</h1>
+                <h1 className='text-4xl text-center font-josefin mb-10'> Add A Class</h1>
                 <div className='grid md:grid-cols-2 gap-4 mb-10'>
                     <div className="form-control">
                         <label className="label">
