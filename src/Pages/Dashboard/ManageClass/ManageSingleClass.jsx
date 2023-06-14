@@ -92,7 +92,12 @@ const ManageSingleClass = ({ singleClass, refetch, setShowModal }) => {
                         <td>
                             <button
                                 onClick={() => setShowModal(_id)}
-                                className="btn btn-sm bg-secondary text-white">Feedback</button>
+                                className={
+                                    status === 'panding' ?
+                                        'btn btn-disabled'
+                                        :
+                                        "btn btn-secondary text-white"
+                                }>Feedback</button>
                         </td>
                     </tr>
                 </tbody>
