@@ -77,7 +77,7 @@ const PopularInstractor = () => {
                     p-6
                     ">
                             <h3 className="text-2xl text-center font-semibold font-josefin">Sheikh Mahammad Rifat</h3>
-                            <p className="text-black text-xl font-josefin">Total Students: 750+</p>
+                            <p className="text-black text-xl font-josefin">Total Students: 650+</p>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="overflow-hidden">
@@ -99,7 +99,7 @@ const PopularInstractor = () => {
                     p-6
                     ">
                             <h3 className="text-2xl font-semibold font-josefin">Govinda</h3>
-                            <p className="text-black text-xl font-josefin">Total Students: 750+</p>
+                            <p className="text-black text-xl font-josefin">Total Students: 550+</p>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="overflow-hidden">
@@ -121,7 +121,7 @@ const PopularInstractor = () => {
                     p-6
                     ">
                             <h3 className="text-2xl font-semibold font-josefin">Susmita Sen</h3>
-                            <p className="text-black text-xl font-josefin">Total Students: 750+</p>
+                            <p className="text-black text-xl font-josefin">Total Students: 490+</p>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="overflow-hidden">
@@ -143,7 +143,7 @@ const PopularInstractor = () => {
                     p-6
                     ">
                             <h3 className="text-2xl font-semibold font-josefin">Nora Fatehi</h3>
-                            <p className="text-black text-xl font-josefin">Total Students: 750+</p>
+                            <p className="text-black text-xl font-josefin">Total Students: 440+</p>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="overflow-hidden">
@@ -165,7 +165,7 @@ const PopularInstractor = () => {
                     p-6
                     ">
                             <h3 className="text-2xl font-semibold font-josefin">Daniela Blume</h3>
-                            <p className="text-black text-xl font-josefin">Total Students: 750+</p>
+                            <p className="text-black text-xl font-josefin">Total Students: 420+</p>
                         </div>
                     </SwiperSlide>
                 </Swiper>
