@@ -7,7 +7,7 @@ const ManageSingleClass = ({ singleClass, refetch, setShowModal }) => {
 
     const handleConfirmed = id => {
         const updateStatus = { userId: id, status: "confirmed" }
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateStatus)
@@ -28,7 +28,7 @@ const ManageSingleClass = ({ singleClass, refetch, setShowModal }) => {
 
     const handleDenied = id => {
         const updateStatus = { userId: id, status: "denied" }
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/classes/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateStatus)

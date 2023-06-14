@@ -2,17 +2,21 @@ import { useEffect, useState } from "react";
 import banner from "../../assets/Instructors/instractor_banner.jpg"
 import SingleInstructors from "./SingleInstructors/SingleInstructors";
 import SectionTitle from "../../SectionTitile/SectionTitle";
+import { useHeader } from "../../Hooks/useTitile";
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     console.log(instructors);
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://art-in-motion-server-coders-rabbi.vercel.app/instructors')
             .then(res => res.json())
             .then(data => {
                 setInstructors(data);
             })
     }, [])
+
+    useHeader("Instructors - Art in motion")
+
     return (
         <div>
             <div className="relative">

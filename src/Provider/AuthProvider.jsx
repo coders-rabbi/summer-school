@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
 
             //get and set jwt token
             if (loggedUser) {
-                axios.post('http://localhost:5000/jwt', { email: loggedUser.email })
+                axios.post('https://art-in-motion-server-coders-rabbi.vercel.app/jwt', { email: loggedUser.email })
                 .then(data => {
                     // console.log(data.data);
                     localStorage.setItem('access-token', data.data);

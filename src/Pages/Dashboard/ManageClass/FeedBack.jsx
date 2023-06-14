@@ -16,7 +16,7 @@ const FeedBack = ({ isVisible, onClose, showModal }) => {
         const feedback = form.feedback.value;
 
         const addReason = { userId: showModal, reason: feedback }
-        fetch(`http://localhost:5000/classes/${showModal}`, {
+        fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/classes/${showModal}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(addReason)
@@ -25,7 +25,6 @@ const FeedBack = ({ isVisible, onClose, showModal }) => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    // refetch();
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',

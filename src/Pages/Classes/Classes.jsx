@@ -4,9 +4,12 @@ import classBanner from "../../assets/HomeBanner/banner_02.jpg"
 import { FaCalendarCheck, FaUserAlt, FaClock } from "react-icons/fa";
 import SingleClass from './SingleClass';
 import SectionTitle from '../../SectionTitile/SectionTitle';
+import { useHeader } from '../../Hooks/useTitile';
 
 const Classes = () => {
     const [classes] = useClasses()
+
+    useHeader("Classes - Art in motion")
     
     return (
         <div>

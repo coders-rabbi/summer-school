@@ -19,7 +19,7 @@ const SingleEnrolledCourse = ({ course }) => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/my-course/${id}`, {
+                fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/my-course/${id}`, {
                     method: "DELETE"
                 })
                     .then((res) => res.json())

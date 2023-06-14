@@ -9,13 +9,14 @@ import { GiBookAura, GiBookCover } from "react-icons/gi";
 import useClasses from '../../Hooks/useClasses';
 import useAddClass from '../../Hooks/useAddClass';
 import useEnrolledCourse from '../../Hooks/useEnrolledCourse';
+import { useHeader } from '../../Hooks/useTitile';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
     const [classes] = useClasses();
 
     const { data: allUsers = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
+        const res = await fetch('https://art-in-motion-server-coders-rabbi.vercel.app/users')
         return res.json();
     })
 
@@ -29,6 +30,9 @@ const Dashboard = () => {
 
 
     const [SelectedCourse] = useEnrolledCourse();
+
+
+    useHeader("Dashboard - Art in motion")
 
     return (
         <div className='md:grid grid-cols-4 gap-4'>

@@ -18,7 +18,7 @@ const Social = () => {
                 const userInfo = { userName: loggedUser.displayName, userEmail: loggedUser.email, role: "student" }
                 console.log(userInfo);
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://art-in-motion-server-coders-rabbi.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

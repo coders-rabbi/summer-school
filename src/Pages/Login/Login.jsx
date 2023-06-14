@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Social from "./Social";
+import { useHeader } from "../../Hooks/useTitile";
 
 const Login = () => {
     const [visible, setVisible] = useState(false);
@@ -37,7 +38,7 @@ const Login = () => {
             })
     }
 
-
+    useHeader("Login - Art in motion")
 
     return (
         <div>

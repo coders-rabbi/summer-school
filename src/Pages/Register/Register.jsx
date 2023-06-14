@@ -6,10 +6,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
 import Social from "../Login/Social";
+import { useHeader } from "../../Hooks/useTitile";
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    useHeader("Register - Art in motion")
 
     const handleRegister = event => {
         event.preventDefault();
@@ -27,7 +30,7 @@ const Register = () => {
                 updateUserProfile(name, photo)
                     .then(() => {
                         const userInfo = { userName: name, userEmail: email, role: "student" }
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://art-in-motion-server-coders-rabbi.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json',

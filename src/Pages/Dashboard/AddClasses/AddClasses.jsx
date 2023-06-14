@@ -16,7 +16,7 @@ const AddClasses = () => {
         const price = form.price.value;
         const addClass = { name: name, image: image, instructor_name: instructor_name, instructor_email: instructor_email, available_seats: available_seats, price: price, status: 'panding' };
 
-        fetch('http://localhost:5000/classes', {
+        fetch('https://art-in-motion-server-coders-rabbi.vercel.app/classes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

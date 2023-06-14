@@ -20,7 +20,7 @@ const SingleClass = ({ cls }) => {
         if (user && user.email) {
             const enrolledCourse = { courseID: _id, courseName: name, price: price, instructor_name: instructor_name, image: image, user_email: user.email };
             console.log(enrolledCourse);
-            fetch('http://localhost:5000/enrolled-courses', {
+            fetch('https://art-in-motion-server-coders-rabbi.vercel.app/enrolled-courses', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

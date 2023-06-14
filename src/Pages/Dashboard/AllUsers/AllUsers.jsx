@@ -3,13 +3,13 @@ import Swal from 'sweetalert2';
 
 const AllUsers = () => {
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
+        const res = await fetch('https://art-in-motion-server-coders-rabbi.vercel.app/users')
         return res.json();
     })
 
     const handleMakeAdmin = id => {
         const updateRole = { userId: id, role: "admin" }
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/users/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateRole)
@@ -29,10 +29,9 @@ const AllUsers = () => {
     }
 
 
-
     const handleMakeInstructor = id => {
         const updateRole = { userId: id, role: "instructor" }
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/users/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateRole)
