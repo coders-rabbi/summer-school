@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAddClass from '../../../Hooks/useAddClass';
 import ManageSingleClass from './ManageSingleClass';
+import FeedBack from './FeedBack';
 
 const ManageClass = () => {
     const [classes, refetch] = useAddClass()
-    console.log(classes.length);
+    const [showModal, setShowModal] = useState(false);
+    console.log(showModal);
 
     return (
         <div className='col-start-2 col-end-5 p-10'>
@@ -30,9 +32,11 @@ const ManageClass = () => {
                         key={singleClass._id}
                         singleClass={singleClass}
                         refetch={refetch}
+                        setShowModal={setShowModal}
                     ></ManageSingleClass>)
                 }
             </div>
+            <FeedBack isVisible={(showModal)} onClose={() => setShowModal(false)} showModal={showModal}  ></FeedBack>
         </div>
     );
 };

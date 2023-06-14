@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import FeedBack from './FeedBack';
 
-const ManageSingleClass = ({ singleClass, refetch }) => {
+const ManageSingleClass = ({ singleClass, refetch, setShowModal }) => {
     const { _id, image, name, instructor_email, instructor_name, available_seats, price, status } = singleClass;
 
     const handleConfirmed = id => {
@@ -89,11 +90,12 @@ const ManageSingleClass = ({ singleClass, refetch }) => {
                             >Denied</button>
                         </td>
                         <td>
-                            <button className="btn btn-sm bg-secondary text-white">Feedback</button>
+                            <button
+                                onClick={() => setShowModal(_id)}
+                                className="btn btn-sm bg-secondary text-white">Feedback</button>
                         </td>
                     </tr>
                 </tbody>
-
             </table>
         </div>
     );
