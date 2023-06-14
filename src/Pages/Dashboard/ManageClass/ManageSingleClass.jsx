@@ -19,7 +19,7 @@ const ManageSingleClass = ({ singleClass, refetch }) => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',
-                        text: 'This User Instructor Now',
+                        text: 'Class has been approved',
                     })
                 }
             })
@@ -40,7 +40,7 @@ const ManageSingleClass = ({ singleClass, refetch }) => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',
-                        text: 'This User Instructor Now',
+                        text: 'Class has been denied',
                     })
                 }
             })
@@ -89,7 +89,7 @@ const ManageSingleClass = ({ singleClass, refetch }) => {
                             >Denied</button>
                         </td>
                         <td>
-                            <button className="btn btn-sm bg-secondary text-white">Small</button>
+                            <button className="btn btn-sm bg-secondary text-white">Feedback</button>
                         </td>
                     </tr>
                 </tbody>
