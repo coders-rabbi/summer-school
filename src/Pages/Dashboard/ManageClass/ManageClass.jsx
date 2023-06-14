@@ -10,7 +10,8 @@ const ManageClass = () => {
 
     return (
         <div className='col-start-2 col-end-5 p-10'>
-            <h1 className='text-center text-5xl font-serif mb-14'>Manage All Classes</h1>
+            <h1 className='text-center text-5xl font-serif mb-7'>Manage All Classes</h1>
+            <h3 className='text-center text-3xl font-serif mb-14'>Total Classes: {classes.length}</h3>
             <table className="table w-full">
                 <thead>
                     <tr className="grid md:grid-cols-9 rounded-md  mb-5 bg-slate-200">

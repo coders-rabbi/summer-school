@@ -3,9 +3,7 @@ import SingleEnrolledCourse from '../SingleEnrolledCourse/SingleEnrolledCourse';
 import useEnrolledCourse from '../../../Hooks/useEnrolledCourse';
 
 const MySelectedCourse = () => {
-
     const [SelectedCourse] = useEnrolledCourse();
-
 
     return (
         <div className='col-start-2 col-end-5 p-10 bg-white rounded-md'>

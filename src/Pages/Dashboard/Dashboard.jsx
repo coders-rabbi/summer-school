@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { FaBook, FaCheckSquare, FaUsers } from "react-icons/fa";
-// import useEnrolledCourse from '../../Hooks/useEnrolledCourse';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaCartPlus, FaHome } from 'react-icons/fa';
 import { FcApproval } from "react-icons/fc";
 import { useQuery } from '@tanstack/react-query';
 import { GiBookAura, GiBookCover } from "react-icons/gi";
+import useClasses from '../../Hooks/useClasses';
+import useAddClass from '../../Hooks/useAddClass';
+import useEnrolledCourse from '../../Hooks/useEnrolledCourse';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
-    // const [MyCourses] = useEnrolledCourse([]);
+    const [classes] = useClasses();
 
     const { data: allUsers = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users')
@@ -18,10 +20,15 @@ const Dashboard = () => {
     })
 
     const loggedInUser = user?.email;
-
     const userRole = allUsers.find(item => item.userEmail === loggedInUser)
     const role = userRole?.role;
 
+
+    const [instructorClass] = useAddClass();
+    const instructorTotalClass = instructorClass.filter(item => item.instructor_email === user?.email)
+
+
+    const [SelectedCourse] = useEnrolledCourse();
 
     return (
         <div className='md:grid grid-cols-4 gap-4'>
@@ -38,9 +45,38 @@ const Dashboard = () => {
                 <h1 className='text-3xl font-serif mt-5 font-bold'>Student Analytic</h1>
 
                 <div className='text-left mt-10'>
-                    <h3 className='text-xl font-semibold mb-3'>Enrroled Courses: </h3>
-                    <h3 className='text-xl font-semibold mb-3'>Complete Courses: 0</h3>
-                    <h3 className='text-xl font-semibold mb-3'>Payment Due: </h3>
+                    <h3 className='text-xl font-semibold mb-3'>
+
+                        {
+                            role === 'admin' ?
+                                <p>Total Course: {classes.length}</p>
+                                :
+                                <>
+                                    {
+                                        role === 'instructor' ?
+                                            <p>My Total Classes: {instructorTotalClass.length}</p>
+                                            :
+                                            <p>Selected Courses: {SelectedCourse.length}</p>
+                                    }
+                                </>
+                        }
+
+                    </h3>
+                    <h3 className='text-xl font-semibold mb-3'>
+                        {
+                            role === 'admin' ?
+                                <p>Total Users: {allUsers.length}</p>
+                                :
+                                <>
+                                    {
+                                        role === 'instructor' ?
+                                            <p>Total Students: </p>
+                                            :
+                                            <p>Paid Courses: 0</p>
+                                    }
+                                </>
+                        }
+                    </h3>
                 </div>
                 <hr />
                 <div className='flex flex-col items-start gap-4'>
