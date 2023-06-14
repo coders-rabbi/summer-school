@@ -28,7 +28,6 @@ const AllUsers = () => {
             })
     }
 
-
     const handleMakeInstructor = id => {
         const updateRole = { userId: id, role: "instructor" }
         fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/users/${id}`, {
