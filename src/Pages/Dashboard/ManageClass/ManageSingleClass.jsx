@@ -7,7 +7,7 @@ const ManageSingleClass = ({ singleClass, refetch, setShowModal }) => {
 
     const handleConfirmed = id => {
         const updateStatus = { userId: id, status: "confirmed" }
-        fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/${id}`, {
+        fetch(`https://art-in-motion-server-coders-rabbi.vercel.app/classes/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateStatus)
@@ -107,3 +107,6 @@ const ManageSingleClass = ({ singleClass, refetch, setShowModal }) => {
 };
 
 export default ManageSingleClass;
+
+
+
